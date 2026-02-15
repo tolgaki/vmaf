@@ -141,7 +141,7 @@ int vmaf_thread_pool_enqueue(VmafThreadPool *pool, void (*func)(void *data),
         pool->queue.tail = job;
     }
 
-    pthread_cond_broadcast(&(pool->queue.empty));
+    pthread_cond_signal(&(pool->queue.empty));
     pthread_mutex_unlock(&(pool->queue.lock));
 
     return 0;
